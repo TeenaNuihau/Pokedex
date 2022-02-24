@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pokemon v2</title>
+    <!-- Import Styles -->
+    <link rel="stylesheet" href="./styles/style_list.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Import Vue.js -->
+    <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+        <header>
+            <h1>Pokedex</h1>
+            <div>
+                <form>
+                    <i>Name or id </i>
+                    <input type="text" placeholder="Search ...">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </header>
+        <div>
+            <div class="container">
+                <section class="pokedex_results">
+                  <ul class="results" style="height: auto;">
+                    <li class="animating" v-for="pokemon in pokemons">
+                      <!-- Image ici-->
+                      <figure>
+                        <img style="width: 200px; height: 200px;" :src="getImage(getIdByUrl(pokemon.url))">
+                      </figure>
+                      
+                      <div> {{ pokemon.name }} </div>
+                      <div> {{ getIdByUrl(pokemon.url) }} </div>
+                      
+                    </li> 
+                    
+                  </ul>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Import App -->
+    <script src="./main.js"></script>
+
+    <!-- Import Components -->
+    <script src="./pokemonDisplay.js"></script>
+
+    <!-- Mount App -->
+    <script>
+      const mountedApp = app.mount('#app')
+    </script>
+  </body>
+</html>

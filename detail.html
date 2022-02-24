@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokemon | nom</title>
+    <link rel="stylesheet" href="./styles/style_detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <h1>Pokedex</h1>
+        <div>
+            <form>
+                <i>Name or id</i>
+                <input type="text" placeholder="Search ...">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="nom" v-for="form in forms"> {{ form.name }} </div>
+        <div class="id" v-for="index in game_indices"> {{ index.game_index }} </div>
+        
+        <section class="info">
+            <image :alt="form.name" src="./images/bulbasaur.png" style="width: 400px; height: 400px; position: relative; margin-left: 5%;"></image>
+            <div class="descrip">
+                There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows larger.
+                <div>Type</div>
+                <ul>
+                    <li class="type_grass">Grass</li>
+                    <li class="type_poison">Poison</li>
+                </ul>
+                <div>
+                    Weaknesses
+                </div>
+                <ul>
+                    <li class="type_fire">Fire</li>
+                    <li class="type_psychic">Psychic</li>
+                    <li class="type_flying">Flying</li>
+                    <li class="type_ice">Ice</li>
+                </ul>
+            </div>
+                     
+        </section>
+    </div>
+</body>
+</html>
