@@ -3,12 +3,9 @@ const app = Vue.createApp({
         return {
             pokemons: [{}],
             version: 'silver',
-            forms: [{}],
-            sprites: [{}],
-            image: {},
-            types: [{}],
-            height: 0,
-            weight: 0,
+            id: 0,
+            infos: {},
+            isChosen: false,
         }
     },
     mounted() {
@@ -27,13 +24,39 @@ const app = Vue.createApp({
             const image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + id + ".png"
             return image
         },
+
+        choose() {
+            this.isChosen = !this.isChosen
+        },
+
+
         getInfos(url) {
+            this.id = this.getIdByUrl(url)
+            this.choose()
             fetch(url)
                 .then(response => response.json())
-                .then(data => (this.forms = data.forms)),
+                .then(data => (this.infos = data))
+        },
+        getForms(url) {
             fetch(url)
                 .then(response => response.json())
-                .then(data => (this.types = data.types))
-            }
+                .then(data => (this.infos.forms = data.forms))
+        },
+        getHeight(url) {
+            fetch(url)
+                .then(response => response.json())
+                .then(data => (this.infos.height = data.height))
+        },
+        getWeight(url) {
+            fetch(url)
+                .then(response => response.json())
+                .then(data => (this.infos.weight = data.weight))
+        },
+        getTypes(url) {
+            fetch(url)
+                .then(response => response.json())
+                .then(data => this.infos.types = data.types)
+        },
+        
     }
 })
