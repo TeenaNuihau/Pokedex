@@ -9,7 +9,7 @@ const app = Vue.createApp({
         }
     },
     mounted() {
-        fetch("https://pokeapi.co/api/v2/pokemon?limit=40&offset=0")
+        fetch("https://pokeapi.co/api/v2/pokemon?limit=1300&offset=0")
             .then(response => response.json())
             .then(data => (
                 this.pokemons = data.results))
